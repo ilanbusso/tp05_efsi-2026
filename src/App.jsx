@@ -17,25 +17,19 @@ function App() {
     if (!terminoBusqueda.trim()) return
 
     const traerPeliculas = async () => {
-      try {
-        setLoading(true)
-        setError("")
+      setLoading(true)
+      setError("")
 
-        const data = await buscarPeliculas(terminoBusqueda)
+      const data = await buscarPeliculas(terminoBusqueda)
 
-        if (data?.Response === "False" || !data?.Search?.length) {
-          setPeliculas([])
-          setError("No se encontraron resultados.")
-          return
-        }
-
-        setPeliculas(data.Search)
-      } catch (e) {
+      if (data.Response === "False" || !data.Search || data.Search.length === 0) {
         setPeliculas([])
-        setError("Ocurrió un error al buscar películas.")
-      } finally {
-        setLoading(false)
+        setError("No se encontraron resultados.")
+      } else {
+        setPeliculas(data.Search)
       }
+
+      setLoading(false)
     }
 
     traerPeliculas()
@@ -53,22 +47,12 @@ function App() {
     setTerminoBusqueda(busqueda)
   }
 
-  const inputBase = InputBusqueda("text", "Escribí una película o serie")
-  const inputConEventos = {
-    ...inputBase,
-    props: {
-      ...inputBase.props,
-      value: busqueda,
-      onChange: (e) => setBusqueda(e.target.value)
-    }
-  }
-
   return (
     <>
       {Titulo("Buscador de películas y series")}
 
       <form onSubmit={manejarSubmit}>
-        {inputConEventos}
+        <InputBusqueda busqueda={busqueda} setBusqueda={setBusqueda} />
         <button type="submit">Buscar</button>
       </form>
 
