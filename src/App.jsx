@@ -8,11 +8,11 @@ import Loader from './components/loader'
 import MensajeError from './components/mensajeError'
 
 function App() {
-  
+  // aca van los useState + funciones
 
   return (
     <>
-      
+      /* aca van los componentes */
     </>
   )
 }
