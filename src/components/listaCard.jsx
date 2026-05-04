@@ -1,3 +1,5 @@
+import MovieCard from "./movieCard"
+
 function listaCard({ peliculas, onSeleccionar }) {
   return (
     <div>
