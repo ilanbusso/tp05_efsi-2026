@@ -11,4 +11,4 @@ function listaCard({ peliculas, onSeleccionar }) {
     </div>
   )
 }
-expor default listaCard
+export default listaCard
