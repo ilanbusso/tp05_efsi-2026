@@ -5,7 +5,7 @@ import ListaCard from "./components/listaCard"
 import MovieDetail from "./components/movieDetail"
 import Loader from "./components/loader"
 import MensajeError from "./components/mensajeError"
-import { buscarPeliculas, obtenerDetalle } from "./services/API"
+import { buscarPeliculas, buscarDetalle } from "./services/API"
 
 function App() {
   const [busqueda, setBusqueda] = useState("")
