@@ -14,7 +14,7 @@ export async function buscarPeliculas(titulo) {
     return respuesta.data
 }
 
-export async function obtenerDetallePelicula(id) {
+export async function buscarDetalle(id) {
     const respuesta = await axios.get(BASE_URL, {
         params: {
             apikey: API_KEY,

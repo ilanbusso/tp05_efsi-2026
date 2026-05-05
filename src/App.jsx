@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import Titulo from "./components/titulo"
 import InputBusqueda from "./components/inputBusqueda"
 import ListaCard from "./components/listaCard"
+import MovieDetail from "./components/movieDetail"
 import Loader from "./components/loader"
 import MensajeError from "./components/mensajeError"
-import { buscarPeliculas } from "./services/API"
+import { buscarPeliculas, obtenerDetalle } from "./services/API"
 
 function App() {
   const [busqueda, setBusqueda] = useState("")
@@ -12,6 +13,9 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [terminoBusqueda, setTerminoBusqueda] = useState("")
+  const [idSeleccionado, setIdSeleccionado] = useState("")
+  const [detallePelicula, setDetallePelicula] = useState(null)
+
 
   useEffect(() => {
     if (!terminoBusqueda.trim()) return
@@ -35,6 +39,17 @@ function App() {
     traerPeliculas()
   }, [terminoBusqueda])
 
+  useEffect(() => {
+    if (!idSeleccionado) return
+
+    const traerDetalle = async () => {
+      const data = await buscarDetalle(idSeleccionado)
+      setDetallePelicula(data)
+    }
+
+    traerDetalle()
+  }, [idSeleccionado])
+
   const manejarSubmit = (e) => {
     e.preventDefault()
 
@@ -47,6 +62,12 @@ function App() {
     setTerminoBusqueda(busqueda)
   }
 
+  const manejarSeleccion = (id) => {
+    setIdSeleccionado(id)
+  }
+
+
+
   return (
     <>
       {Titulo("Buscador de películas y series")}
@@ -58,7 +79,11 @@ function App() {
 
       {loading && <Loader />}
       {!loading && error && <MensajeError mensaje={error} />}
-      {!loading && !error && peliculas.length > 0 && <ListaCard peliculas={peliculas} />}
+      {!loading && !error && peliculas.length > 0 && (
+        <ListaCard peliculas={peliculas} onSeleccionar={manejarSeleccion} />
+      )}
+
+      {detallePelicula && <MovieDetail pelicula={detallePelicula} />}
     </>
   )
 }
