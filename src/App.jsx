@@ -6,7 +6,7 @@ import MovieDetail from "./components/movieDetail"
 import Loader from "./components/loader"
 import MensajeError from "./components/mensajeError"
 import { buscarPeliculas, buscarDetalle } from "./services/API"
-
+import "./App.css"
 function App() {
   const [busqueda, setBusqueda] = useState("")
   const [peliculas, setPeliculas] = useState([])
