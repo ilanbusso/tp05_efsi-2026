@@ -23,6 +23,7 @@ function App() {
     const traerPeliculas = async () => {
       setLoading(true)
       setError("")
+      setDetallePelicula(null)
 
       const data = await buscarPeliculas(terminoBusqueda)
 
