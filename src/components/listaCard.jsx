@@ -2,7 +2,7 @@ import MovieCard from "./movieCard"
 
 function listaCard({ peliculas, onSeleccionar }) {
   return (
-    <div>
+    <div  className="movie-grid">
       {peliculas.map((peli) => (
         <MovieCard
           key={peli.imdbID}

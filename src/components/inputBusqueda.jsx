@@ -1,6 +1,6 @@
 function InputBusqueda({ busqueda, setBusqueda }) {
   return (
-    <input
+    <input className="search-input"
       type="text"
       placeholder="Escribí una película o serie"
       value={busqueda}

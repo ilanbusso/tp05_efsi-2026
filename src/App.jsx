@@ -70,20 +70,23 @@ function App() {
 
   return (
     <>
-      {Titulo("Buscador de películas y series")}
+      <div className="app-container">
+        {Titulo("Buscador de películas y series")}
 
-      <form onSubmit={manejarSubmit}>
-        <InputBusqueda busqueda={busqueda} setBusqueda={setBusqueda} />
-        <button type="submit">Buscar</button>
-      </form>
+        <form className="search-form" onSubmit={manejarSubmit}>
+          <InputBusqueda busqueda={busqueda} setBusqueda={setBusqueda} />
+          <button className="search-button" type="submit">Buscar</button>
+        </form>
 
-      {loading && <Loader />}
-      {!loading && error && <MensajeError mensaje={error} />}
-      {!loading && !error && peliculas.length > 0 && (
-        <ListaCard peliculas={peliculas} onSeleccionar={manejarSeleccion} />
-      )}
+        {loading && <Loader />}
+        {!loading && error && <MensajeError mensaje={error} />}
+        {!loading && !error && peliculas.length > 0 && (
+          <ListaCard peliculas={peliculas} onSeleccionar={manejarSeleccion} />
+        )}
 
-      {detallePelicula && <MovieDetail pelicula={detallePelicula} />}
+        {detallePelicula && <MovieDetail pelicula={detallePelicula} />}
+      </div>
+
     </>
   )
 }

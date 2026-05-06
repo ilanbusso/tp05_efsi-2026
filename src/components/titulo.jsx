@@ -1,6 +1,6 @@
 function titulos(contenido){
     return(
-        <h1>{contenido}</h1>
+        <h1 className="app-title">{contenido}</h1>
     )
 }
 

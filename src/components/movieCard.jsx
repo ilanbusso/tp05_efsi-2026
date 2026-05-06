@@ -1,12 +1,12 @@
 function MovieCard({ pelicula, onSeleccionar }) {
   return (
-    <div>
-      <img src={pelicula.Poster} alt={pelicula.Title} />
-      <h3>{pelicula.Title}</h3>
-      <p>Año: {pelicula.Year}</p>
-      <p>Tipo: {pelicula.Type}</p>
+    <div className="movie-card">
+      <img className="movie-poster" src={pelicula.Poster} alt={pelicula.Title} />
+      <h3 className="movie-title">{pelicula.Title}</h3>
+      <p className="movie-meta">Año: {pelicula.Year}</p>
+      <p className="movie-meta">Tipo: {pelicula.Type}</p>
 
-      <button onClick={() => onSeleccionar(pelicula.imdbID)}>
+      <button className="detail-button" onClick={() => onSeleccionar(pelicula.imdbID)}>
         Ver detalle
       </button>
     </div>

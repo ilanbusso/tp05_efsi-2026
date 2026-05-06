@@ -8,10 +8,11 @@ function movieDetail({ pelicula }) {
   }
 
   return (
-    <div>
-      <h2>{pelicula.Title}</h2>
+     <div className="movie-detail">
+      <img className="movie-detail-poster" src={pelicula.Poster} alt={pelicula.Title} />
 
-      <img src={pelicula.Poster} alt={pelicula.Title} />
+      <div className="movie-detail-content">
+      <h2>{pelicula.Title}</h2>
 
       <p>Año: {pelicula.Year}</p>
       <p>Género: {pelicula.Genre}</p>
@@ -22,6 +23,7 @@ function movieDetail({ pelicula }) {
       <p>Idioma: {pelicula.Language}</p>
       <p>País: {pelicula.Country}</p>
       <p>Puntaje IMDb: {pelicula.imdbRating}</p>
+      </div>
     </div>
   )
 }
